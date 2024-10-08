@@ -1,0 +1,40 @@
+ФИО: Харламенко Всеволод Вадимович
+Дата: 08.10.2024
+Группа: 6379 (Программист | 17.04.2024)
+
+
+1.
+cat > Pets
+
+cat > "Pack animals"
+
+cat "Pack animals" Pets > Result
+
+mv Result "Human Friends"
+
+ls
+Вывод: 'Human Friends'  'Pack animals'   Pets   transfer
+
+
+2.
+mkdir another_folder
+
+mv "Human Friends" another_folder/
+
+
+3.
+sudo apt update
+
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.32-1_all.deb
+
+sudo dpkg -i mysql-apt-config_0.8.32-1_all.deb
+
+sudo apt update
+
+sudo systemctl start mysql
+
+
+4.
+sudo systemctl stop mysql
+
+sudo apt purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
