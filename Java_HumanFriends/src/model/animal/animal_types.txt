@@ -1,0 +1,6 @@
+Camel
+Donkey
+Horse
+Cat
+Dog
+Hamster
