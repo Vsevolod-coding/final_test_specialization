@@ -9,6 +9,7 @@ import java.util.List;
 public class AnimalTypesReader {
     private static final String FILE_PATH = "src/model/animal/animal_types.txt";
 
+	// Метод для чтения типов животных из файла и возвращения их в виде списка
     public List<String> getAnimalTypes() {
         List<String> animalTypes = new ArrayList<>();
 

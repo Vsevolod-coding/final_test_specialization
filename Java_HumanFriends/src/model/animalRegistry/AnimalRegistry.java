@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class AnimalRegistry implements Serializable {
+	// Хранение животных, где ключ — это тип животного (Pet или PackAnimal), а значение — список животных этого типа
     private Map<Class<? extends Animal>, List<Animal>> animalMap;
 
     public AnimalRegistry() {
@@ -65,13 +66,16 @@ public class AnimalRegistry implements Serializable {
 
     public String showAllAnimals() {
         StringBuilder result = new StringBuilder();
-
+		
+		// Проходим по каждому списку животных в animalMap
         for (Map.Entry<Class<? extends Animal>, List<Animal>> entry : animalMap.entrySet()) {
-            Class<? extends Animal> type = entry.getKey();
+            // Получаем тип животного (например, Pet или PackAnimal)
+			Class<? extends Animal> type = entry.getKey();
             List<Animal> animals = entry.getValue();
 
             result.append("Тип: ").append(type.getSimpleName()).append("\n");
 
+			// Проходим по каждому животному в списке и добавляем его в результат
             for (Animal animal : animals) {
                 result.append(animal.toString()).append("\n");
             }

@@ -22,13 +22,16 @@ public class FileHandler implements Writer {
     @Override
     public Object read() {
         Object readObject;
+		// Проверка на то, пустой ли файл
         if (fileIsEmpty(file)) {
             try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(pathToFile))) {
-                objectOutputStream.writeObject(new AnimalRegistry());
+                // В файл записывается пустой экземпляр AnimalRegistry (создается, чтобы избежать чтения из пустого файла)
+				objectOutputStream.writeObject(new AnimalRegistry());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+		// Считываем сериализованный объект из файла и сохраняем в readObject
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(pathToFile))) {
             readObject = objectInputStream.readObject();
         } catch (Exception e) {

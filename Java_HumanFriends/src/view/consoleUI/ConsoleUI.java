@@ -16,7 +16,7 @@ public class ConsoleUI implements View {
     private ConsoleInputHandler consoleInputHandler;
     private List<String> animalTypes;
 
-    private static final int MIN_SIZE = 1;
+    private static final int MIN_AVAILABLE = 1;
 
     public ConsoleUI() {
         work = true;
@@ -43,7 +43,7 @@ public class ConsoleUI implements View {
         while (work) {
             System.out.println(mainMenu.showMenu());
             String strChoice = consoleInputHandler.getInput();
-            if (consoleInputHandler.isMenuChoiceValid(strChoice, MIN_SIZE, mainMenu.size())) {
+            if (consoleInputHandler.isMenuChoiceValid(strChoice, MIN_AVAILABLE, mainMenu.size())) {
                 int choice = Integer.parseInt(strChoice);
                 mainMenu.execute(choice);
             } else {
@@ -57,7 +57,8 @@ public class ConsoleUI implements View {
         for (String animalType : animalTypes) {
             System.out.println("- " + animalType);
         }
-
+		
+		// Запрашиваем у пользователя данные (тип, имя, дату)
         String animalType = consoleInputHandler.getAnimalTypeInput(animalTypes);
         String name = getAnimalName();
         LocalDate birthDate = getBirthDate();
@@ -131,7 +132,7 @@ public class ConsoleUI implements View {
         return presenter.showAnimalByBirthDate();
     }
 
-    // Проверка на наличие дефолтного файла для животных и его создание, если он отсутствует
+    // Проверка на наличие дефолтного файла для хранения данных о животных и его создание, если он отсутствует
     private void checkAndOrCreateDefaultFile() {
         File defaultFile = new File(presenter.getPath());
         if (!defaultFile.exists()) {
